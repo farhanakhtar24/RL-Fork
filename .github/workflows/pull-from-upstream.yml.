@@ -11,7 +11,7 @@ jobs:
       - name: Checkout upstream
         uses: actions/checkout@v2
         with:
-          repository: <upstream-repo-owner>/<upstream-repo-name>
+          repository: rancholabs/webD.team-Farhan
           ref: main
 
       - name: Pull changes
