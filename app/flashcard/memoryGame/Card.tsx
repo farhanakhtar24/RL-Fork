@@ -21,8 +21,8 @@ const Card = ({ id, src, matched, flipped, handleChoice, disabled }: Props) => {
 			<div>
 				<Image
 					className={`border-2 border-white rounded-md overflow-hidden ${
-						flipped ? "rotate-y-0 delay-100" : ""
-					} absolute rotate-y-90 transition-all ease-in duration-100`}
+						flipped ? "rotate-y-0 delay-100" : "rotate-y-90"
+					} absolute transition-all ease-in duration-100`}
 					src={src.src}
 					alt=""
 					width={150}
