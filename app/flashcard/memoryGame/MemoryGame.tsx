@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import hemlet from "../assets/helmet-1.png";
-import potion from "../assets/potion-1.png";
-import sword from "../assets/sword-1.png";
-import shield from "../assets/shield-1.png";
-import scroll from "../assets/scroll-1.png";
-import ring from "../assets/ring-1.png";
+import hemlet from "/app/flashcard/assets/helmet-1.png";
+import potion from "/app/flashcard/assets/potion-1.png";
+import sword from "/app/flashcard/assets/sword-1.png";
+import shield from "/app/flashcard/assets/shield-1.png";
+import scroll from "/app/flashcard/assets/scroll-1.png";
+import ring from "/app/flashcard/assets/ring-1.png";
 import { StaticImageData } from "next/image";
 import Card from "./Card";
 
