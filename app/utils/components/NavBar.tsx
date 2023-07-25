@@ -31,6 +31,9 @@ const NavBar = (props: Props) => {
 				<li>
 					<Link href={`/fibdnd`}>Fill In the Blanks / DND</Link>
 				</li>
+				<li>
+					<Link href={`/2dRoboGame`}>2D Game</Link>
+				</li>
 			</ul>
 		</div>
 	);
