@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { Dispatch, useState } from "react";
 import GameInstructions from "./GameInstructions";
 import DragDropButtonComponent from "./DragDropButtonComponent";
 import GameMatrix from "./GameMatrix";
@@ -8,66 +8,46 @@ import GamePopUp from "./GamePopUp";
 import Build from "/app/utils/images/Build.png";
 import Coin from "/app/utils/images/Coin.png";
 import Health from "/app/utils/images/Health.png";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import RobotImg from "/app/utils/images/robot.png";
+import { getRoboGameData } from "@/app/redux Toolkit/slice/RoboGameSlice";
+import { useAppSelector } from "@/app/redux Toolkit/hooks";
 
 interface Props {
-	row: number;
-	col: number;
-	image: StaticImageData;
-	carPosition: any;
-	setCarPosition: any;
-	endPosition: {
-		x: number;
-		y: number;
-	};
-	boxSize: number;
-	setBoxSize: any;
-	boxes: any;
-	setBoxes: any;
-	robotDirection: any;
-	setRobotDirection: any;
-	buttons: any;
-	batteryPosition: any;
-	filterBatteryPosition: any;
-	setFilterBatteryPosition: any;
-	carHealth: any;
-	setCarHealth: any;
-	carInitialHealth: any;
-	obstaclePosition: any;
-	currentSlide: any;
-	setCurrentSlide: any;
-	slideLength: any;
-	coins: any;
-	setCoins: any;
+	currentSlide: number;
+	setCurrentSlide: Dispatch<React.SetStateAction<number>>;
+	buttons: string[];
+	slideLength: number;
 }
 
 const CarGameActivityTwo = ({
-	row,
-	col,
-	image,
-	carPosition,
-	setCarPosition,
-	endPosition,
-	boxSize,
-	setBoxSize,
-	boxes,
-	setBoxes,
-	robotDirection,
-	setRobotDirection,
 	buttons,
-	batteryPosition,
-	filterBatteryPosition,
-	setFilterBatteryPosition,
-	carHealth,
-	setCarHealth,
-	carInitialHealth,
-	obstaclePosition,
 	currentSlide,
 	setCurrentSlide,
 	slideLength,
-	coins,
-	setCoins,
 }: Props) => {
+	const carGameData = useAppSelector(getRoboGameData);
+	const carGames = carGameData[currentSlide];
+	const {
+		row,
+		col,
+		endPosition,
+		batteryPosition,
+		carInitialHealth,
+		obstaclePosition,
+	} = carGames;
+	const image = RobotImg;
+	const [robotDirection, setRobotDirection] = useState(
+		carGames.robotDirection
+	);
+	const [filterBatteryPosition, setFilterBatteryPosition] = useState(
+		carGames.filterBatteryPosition
+	);
+	const [carPosition, setCarPosition] = useState(carGames.carPosition);
+	const [boxSize, setBoxSize] = useState(carGames.boxSize);
+	const [carHealth, setCarHealth] = useState(carGames.carHealth);
+	const [boxes, setBoxes] = useState(carGames.boxes);
+	const [coins, setCoins] = useState(carGames.coins);
 	const [rotateCarClockWise, setRotateCarClockWise] = useState(false);
 	const [rotateCarAntiClockWise, setRotateCarAntiClockWise] = useState(false);
 	const [showPopUp, setShowPopUp] = useState(false);
@@ -80,8 +60,6 @@ const CarGameActivityTwo = ({
 	const handleRotateCarAntiClockWise = () => {
 		setRotateCarAntiClockWise(true);
 	};
-
-	console.log("col", col);
 
 	return (
 		<div>
@@ -140,7 +118,11 @@ const CarGameActivityTwo = ({
 							row > 8 ? "py-0" : "py-5"
 						} h-[59%] sm:h-[53%] xl:h-[60%] 2xl:h-[67%]`}>
 						<div
-							className={`grid grid-cols-${col} gap-0 mx-auto my-auto`}>
+							className={`grid gap-0 mx-auto my-auto`}
+							style={{
+								gridTemplateColumns: `repeat(${col}, minmax(0, 1fr))`,
+								// grid-template-columns: repeat(5, minmax(0, 1fr));
+							}}>
 							<GameMatrix
 								row={row}
 								col={col}

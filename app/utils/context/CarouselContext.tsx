@@ -1,6 +1,6 @@
 "use client";
 import React, { Dispatch, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, animate } from "framer-motion";
 
 type Props = {
 	children: React.ReactNode;
@@ -61,7 +61,7 @@ const CarouselContext = ({
 			)}
 			<AnimatePresence initial={false} custom={direction}>
 				<motion.div
-					className="h-full w-full overflow-hidden"
+					className="min-h-screen w-full overflow-hidden"
 					key={currentSlide}
 					custom={direction}
 					variants={variants}

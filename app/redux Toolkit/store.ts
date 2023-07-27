@@ -5,6 +5,7 @@ import DndSlice from "./slice/DndSlice";
 import ImageChoiceSlice from "./slice/ImageChoiceSlice";
 import FIBSlice from "./slice/FIBSlice";
 import FIBDndSlice from "./slice/FIBDndSlice";
+import RoboGameSlice from "./slice/RoboGameSlice";
 enableMapSet();
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
 		ImageChoiceSlice: ImageChoiceSlice.reducer,
 		FIBSlice: FIBSlice.reducer,
 		FIBDNDSlice: FIBDndSlice.reducer,
+		RoboGameSlice: RoboGameSlice.reducer,
 	},
 });
 

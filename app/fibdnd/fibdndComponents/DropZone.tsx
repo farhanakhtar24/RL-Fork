@@ -51,13 +51,13 @@ const DropZone = ({ index, slideIndex }: Props) => {
 		<>
 			{word ? (
 				<span
-					className={`w-[100px] h-full text-black  border-b border-black border-dashed `}
+					className={`w-[100px] h-10 text-black  border-b border-black border-dashed `}
 					ref={drop}>
 					{word}
 				</span>
 			) : (
 				<span
-					className={`flex text-black w-[100px] h-full border-b border-black border-dashed `}
+					className={`flex text-black w-[100px] h-10 border-b border-black border-dashed `}
 					ref={drop}
 				/>
 			)}
